@@ -25,8 +25,7 @@ function emailCheck($email)
  /**
   * confirm password
   */
-
-  function passcheck($pass, $cpass){
+    function passcheck($pass, $cpass){
       if($pass === $cpass){
           return true;
       }else{
@@ -121,4 +120,5 @@ function move($file, $path = '/')
 function goHash($pass){
     return password_hash($pass, PASSWORD_DEFAULT);
 }
+
 

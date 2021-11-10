@@ -23,7 +23,7 @@ input, input:focus {
 }
 input[type="submit"]  {
 	border: 1px solid transparent !important;
-}
+	}
 
 .wrap {
 	width: 500px;

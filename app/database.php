@@ -7,7 +7,6 @@ function connect()
     return new mysqli(HOST, USER, PASS, DB);
 }
 
-
 /**
  * Create 
  */
@@ -38,13 +37,21 @@ function find($table, $id){
  */
     function dataCheck($table, $col, $val)
     {
-        $p = "SELECT {$col} FROM {$table} WHERE {$col}='$val'";
-        $data = connect()->query($p);
+        
+        $data = connect()->query("SELECT {$col} FROM {$table} WHERE {$col}='$val'");
 
        if ($data->num_rows > 0){
             return false;
        }else{
            return true;
        }
+    }
+
+    // edit data
+
+
+
+    function update($sql){
+       return connect()->query($sql);
     }
 ?>

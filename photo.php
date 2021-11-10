@@ -6,21 +6,17 @@
  * check user login
  */
 	if(userLogin() == false){
-
-
-
 		header('location:index.php');
 	}else{
-
-
-			if(isset($_GET['user_id'])){
-				$login_user = userLoginData('users', $_GET['user_id']);
-			}else{
-				$login_user = userLoginData('users', $_SESSION['id']);
-			}
-
-		
+		$login_user = userLoginData('users', $_SESSION['id']);
 	}
+
+
+
+
+
+
+
 
 ?>
 
@@ -28,7 +24,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><?php echo $login_user->name; ?></title>
+	<title><?php echo $login_user-> name; ?></title>
 	<!-- ALL CSS FILES  -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -42,7 +38,7 @@
 			<div class="row">
 				<div class="col-md-8 offset-2">
 					<ul class="nav nav-tab d-flex justify-content-center">
-						<li class="nav nav-item"><a class=" text-secondary text-uppercase font-weight-bold nav-link" href="Profile.php">My Profile</a></li>
+						<li class="nav nav-item"><a class=" text-secondary text-uppercase font-weight-bold nav-link" href="profile.php">My Profile</a></li>
 						<li class="nav nav-item"><a class=" text-secondary text-uppercase font-weight-bold nav-link" href="friends.php">Friends</a></li>
 						<li class="nav nav-item"><a class=" text-secondary text-uppercase font-weight-bold nav-link" href="edit.php">Edit Profile</a></li>
 						<li class="nav nav-item"><a class=" text-secondary text-uppercase font-weight-bold nav-link" href="photo.php">Profile photo</a></li>
@@ -57,8 +53,7 @@
 	</nav>
 
 	<section class="user-profile" style="width:500px; margin: 100px auto 100px; border-radius: 25px; text-align: center;">
-		
-			
+
 		<?php if(isset($login_user -> photo)) :	?>
 			<img src="media/users/<?php echo $login_user -> photo;?>" alt="" style="width: 200px; height: 200px; margin: auto; border: 10px solid #fff; display: block; border-radius: 50%; box-shadow: 0 0 10px skyblue;">
 			
@@ -69,40 +64,33 @@
 			<img src="assets/media/f.jpg" alt="" style="width: 200px; height: 200px; margin: auto; border: 10px solid #fff; display: block; border-radius: 50%; box-shadow: 0 0 10px skyblue;">
 			
 			<?php endif; ?>
+			
+		<?php
 		
-				
+			if(isset($_POST['upload']))
+			{
+				$user_id = $_SESSION['id'];
+				$file = move($_FILES['photo'], 'media/users/');
+
+				update("UPDATE users SET photo='$file' WHERE id='$user_id'");
+
+				header('location:photo.php');
+			}
 		
+		?>
 
 
-		<h3 class="text-center text-secondary font-wight-bold display-4 py-3 text-calitalize"><?php echo $login_user ->name; ?></h3>
 		
-		<div class="card" style="border-radius: 25px; box-shadow: 0 0 10px skyblue;"> 
+		
+		<div class="card" style="border-radius: 30px; margin: 80px 0; box-shadow: 0 0 10px skyblue;"> 
 
 			<div class="card-body bg-info">
-
-				<table class="table table-stripped table-bordered mx-1 table-dark my-auto text-left">
-
-					<tr>
-						<td class="text-light">name</td>
-						<td class="text-light"><?php echo $login_user->name; ?></td>
-					</tr>
-
-					<tr>
-						<td class="text-light">email</td>
-						<td class="text-light"><?php echo $login_user->email; ?></td>
-					</tr>
-					
-					<tr>
-						<td class="text-light">cell</td>
-						<td class="text-light"><?php echo $login_user->cell; ?></td>
-					</tr>
-					
-					<tr>
-						<td class="text-light">gender</td>
-						<td class="text-light"><?php echo $login_user->gender; ?></td>
-					</tr>					
-					
-				</table>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<label for="" class="mx-2"><img src="assets/media/img/pp_photo/photo-icon.png" width="50px" height="50px" alt=""></label>
+					<input type="file" name="photo" class="bg-dark text-light">
+					<input type="submit" class="bg-dark text-light" value="upload" name="upload">
+				</form>
+			
 			</div>
 		</div>
 
