@@ -9,6 +9,13 @@ if(userLogin() == true){
 	header('location:profile.php');
 }
 
+//if(isset($_COOKIE['login_user_cookie_id'])){
+
+	//$login_user_cookie_id = $_COOKIE['login_user_cookie_id'];
+	//header('location:profile.php');
+
+//}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +54,9 @@ if(userLogin() == true){
 				if(passChk($pass, $login_user_data->password)){
 
 					$_SESSION['id'] = $login_user_data->id;
-				
+					//$login_user_cookie_id = $_COOKIE['login_user_cookie_id'];
+					
+					setcookie('login_user_cookie_id', $login_user_data->id, time() + (60*60*24*365*10));
 
 					header('location:profile.php');
 
@@ -67,9 +76,9 @@ if(userLogin() == true){
 
 	<div class="wrap shadow-sm">
 		<div class="card">
-			<div class="card-body">
+			<div class="card-body bg-info">
 				
-			<h2 class="py-2 text-primary font-weight-bold text-center">Login Now</h2>
+			<h2 class="py-2 text-light font-weight-bold text-center">Login Now</h2>
 				
 					<?php
 						if(isset($msg)){
@@ -80,20 +89,20 @@ if(userLogin() == true){
 				<form action="" method="POST" autocomplete="off">
 					
 					<div class="form-group">
-						<label for="">login info</label>
+						<label for="" class="text-light">login info</label>
 						<input name="login" class="form-control" value="<?php old('login')?>" type="text" placeholder="email or cell or username">
 					</div>
 					
 					<div class="form-group">
-						<label for="">Password</label>
+						<label for="" class="text-light">Password</label>
 						<input name="password" class="form-control" type="password"  placeholder="password">
 					</div>
 					<div class="form-group">
-						<input name="signin" class="btn btn-primary my-2" type="submit" value="Sign in">
+						<input name="signin" class="btn btn-dark my-2 float-right" type="submit" value="Sign in">
 					</div>
 				</form>
 				<hr>
-				<a href="reg.php" class="text-primary">Create an Account</a>
+				<a href="reg.php" class="text-light">Create an Account</a>
 			</div>
 		</div>
 	</div>

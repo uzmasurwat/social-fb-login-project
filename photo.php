@@ -70,21 +70,35 @@
 			if(isset($_POST['upload']))
 			{
 				$user_id = $_SESSION['id'];
-				$file = move($_FILES['photo'], 'media/users/');
+				
 
-				update("UPDATE users SET photo='$file' WHERE id='$user_id'");
+				if(empty($_FILES['photo']['name'])){
+						setMsg('warning', 'Please select an image');
+						header('location:photo.php');
+				}
+				else{
 
-				header('location:photo.php');
+					$file = move($_FILES['photo'], 'media/users/');
+
+					update("UPDATE users SET photo='$file' WHERE id='$user_id'");
+
+					setMsg('primary', 'Image added');
+
+					header('location:photo.php');	
+					
+				}				
 			}
+					getMsg('warning');
+					getMsg('primary');
 		
 		?>
 
 
 		
 		
-		<div class="card" style="border-radius: 30px; margin: 80px 0; box-shadow: 0 0 10px skyblue;"> 
+		<div class="card" style="border-radius: 50%; margin: 80px 0; box-shadow: 0 2px 20px skyblue;"> 
 
-			<div class="card-body bg-info">
+			<div class="card-body bg-info py-2 px-1">
 				<form action="" method="POST" enctype="multipart/form-data">
 					<label for="" class="mx-2"><img src="assets/media/img/pp_photo/photo-icon.png" width="50px" height="50px" alt=""></label>
 					<input type="file" name="photo" class="bg-dark text-light">

@@ -73,9 +73,9 @@
 	
 
 	<div class="wrap shadow-sm w-50">
-		<div class="card px-5">
-			<div class="card-body">
-				<h2 class="py-2 text-primary font-weight-bold text-center">Create an account</h2>
+		<div class="card bg-info px-5">
+			<div class="card-body bg-info">
+				<h2 class="py-2 text-light font-weight-bold text-center">Create an account</h2>
 				
 				<?php
 					if(isset($msg)){
@@ -85,45 +85,45 @@
 
 				<form action="" method="POST" autocomplete="off">
 					<div class="form-group">
-						<label for="">Name</label>
+						<label for="" class="text-light">Name</label>
 						<input name="name" class="form-control" value="<?php old('name'); ?>" type="text">
 					</div>
 					<div class="form-group">
-						<label for="">Email</label>
+						<label for="" class="text-light">Email</label>
 						<input name="email" class="form-control" value="<?php old('email'); ?>" type="text">
 					</div>
 					<div class="form-group">
-						<label for="">Cell</label>
+						<label for="" class="text-light">Cell</label>
 						<input name="cell" class="form-control" value="<?php old('cell'); ?>" type="text">
 					</div>
 
 					<div class="form-group">
-						<label for="">Username</label>
+						<label for="" class="text-light">Username</label>
 						<input name="username" class="form-control" value="<?php old('username'); ?>" type="text">
 					</div>
 
 					<div class="form-group">
-						<label for="">Password</label>
+						<label for="" class="text-light">Password</label>
 						<input name="pass" class="form-control" type="password">
 					</div>
 
 					<div class="form-group">
-						<label for="">Confirm Password</label>
+						<label for="" class="text-light">Confirm Password</label>
 						<input name="cpass" class="form-control" type="password">
 					</div>
 
 					<div class="form-group">
-						<label for="">Gender</label><br>
-						<input name="gender" type="radio" value="male" id="Male"><label class="px-3" for="Male">Male</label>
-						<input name="gender" type="radio" value="female" id="Female"><label class="px-3" for="Female">Female</label>
+						<label for="" class="text-light">Gender</label><br>
+						<input name="gender" type="radio" value="male" id="Male"><label class="px-3 text-light" for="Male">Male</label>
+						<input name="gender" type="radio" value="female" id="Female"><label class="px-3 text-light" for="Female">Female</label>
 					</div>
 
 					<div class="form-group">
-						<input name="reg" class="btn btn-primary" type="submit" value="Sign Up">
+						<input name="reg" class="btn btn-dark float-right" type="submit" value="Sign Up">
 					</div>
 				</form>
 				<hr>
-				<a href="index.php" class="text-primary">Login Now</a>
+				<a href="index.php" class="text-light">Login Now</a>
 			</div>
 		</div>
 	</div><br><br>

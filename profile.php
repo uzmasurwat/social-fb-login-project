@@ -100,7 +100,29 @@
 					<tr>
 						<td class="text-light">gender</td>
 						<td class="text-light"><?php echo $login_user->gender; ?></td>
-					</tr>					
+					</tr>	
+					
+					<?php
+						if($login_user->age != NULL) :
+					?>
+					
+					<tr>
+						<td class="text-light">age</td>
+						<td class="text-light"><?php echo $login_user->age; ?></td>
+					</tr>	
+
+					<?php  endif; ?>
+
+					<?php
+						if($login_user->edu != NULL) :
+					?>
+
+					<tr>
+						<td class="text-light">edu</td>
+						<td class="text-light"><?php echo $login_user->edu; ?></td>
+					</tr>	
+
+					<?php  endif; ?>
 					
 				</table>
 			</div>

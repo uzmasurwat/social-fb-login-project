@@ -66,12 +66,13 @@
 				echo $edu = $_POST['edu'];
 				echo $gender = $_POST['gender'];
 				$login_user_id = $_SESSION['id'];
+				$updated_at = date('Y-m-d h:m:s');
 
 					if(empty($name) || empty($email) || empty($cell) || empty($username) || empty($gender)){
 
 						echo validate('All fields are needed');
 					}else{
-						update("UPDATE users SET name='$name', email='$email', cell='$cell', username='$username', gender='$gender', age='$age', edu='$edu' WHERE id='$login_user_id' ");
+						update(" UPDATE users SET name='$name', email='$email', cell='$cell', username='$username', gender='$gender', age='$age', edu='$edu', updated_at='$updated_at' WHERE id='$login_user_id' ");
 						
 						setMsg('success', 'Data Updated');
 
@@ -83,7 +84,7 @@
 			}
 
 			getmsg('success', 'hi');
-			
+
 		?>		
 			
 		
