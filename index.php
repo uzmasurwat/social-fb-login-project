@@ -9,7 +9,8 @@ if(userLogin() == true){
 	header('location:profile.php');
 }
 
-//if(isset($_COOKIE['login_user_cookie_id'])){
+//if(isset($_COOKIE['login_user_cookie_id']))
+//{
 
 	//$login_user_cookie_id = $_COOKIE['login_user_cookie_id'];
 	//header('location:profile.php');
@@ -56,7 +57,7 @@ if(userLogin() == true){
 					$_SESSION['id'] = $login_user_data->id;
 					//$login_user_cookie_id = $_COOKIE['login_user_cookie_id'];
 					
-					setcookie('login_user_cookie_id', $login_user_data->id, time() + (60*60*24*365*10));
+					//setcookie('login_user_cookie_id', $login_user_data->id, time() - (60*60*24*365*5));
 
 					header('location:profile.php');
 
@@ -107,6 +108,18 @@ if(userLogin() == true){
 		</div>
 	</div>
 	
+	<div class="wrap">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<img src="media/user/1636454922_934277694_21.jpg" alt="" style="border-radius: 50%; object-fit: cover; width: 100px; height: 100px;">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 
 
 
